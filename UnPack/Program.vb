@@ -83,9 +83,15 @@ Module Program
             Dim IsSorted As Byte = br.ReadByte
 
             br.BaseStream.Seek(RootDirPos, SeekOrigin.Begin)
-            Dim blockdata as New List(Of Char)(RootDirSize)
-            blockdata.fill(ChrW(0))
-            br.Read(blockdata(0), 0, blockdata.count)
+            Dim buffer as Byte() = New Byte(RootDirSize){}
+            br.Read(buffer, 0, RootDirSize)
+            Dim ms as New MemoryStream(buffer)
+            ms.Position = 0
+            br = New BinaryReader(ms)
+            For i as Int32 = 0 To RootDirSize - 1
+              hh
+
+            Next
             
 
 
