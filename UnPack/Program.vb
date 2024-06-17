@@ -87,8 +87,8 @@ Module Program
             Dim buffer as Byte() = New Byte(RootDirSize){}
             br.Read(buffer, 0, RootDirSize)
             For i As Integer = 0 To size - 1
-                buffer(i) = &H49 + (KEYS(keyPos Mod KEYS.Length) Xor Not buffer(i))
-                keyPos += 1
+                buffer(i) = &H49 + (KEYS(RootDirPos Mod KEYS.Length) Xor Not buffer(i))
+                RootDirPos += 1
             Next
             
             
