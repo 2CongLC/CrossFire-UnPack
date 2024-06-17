@@ -86,10 +86,7 @@ Module Program
             br.BaseStream.Seek(RootDirPos, SeekOrigin.Begin)
             Dim buffer as Byte() = New Byte(RootDirSize){}
             br.Read(buffer, 0, RootDirSize)
-            For i as Int32 = 0 To RootDirSize - 1
-             buffer(i) = &H49 + (KEYS(RootDirPos Mod KEYS.Length) Xor Not buffer(i))
-             RootDirPos +=1
-            Next
+            
             
 
 
