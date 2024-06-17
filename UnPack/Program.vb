@@ -85,11 +85,8 @@ Module Program
             br.BaseStream.Seek(RootDirPos, SeekOrigin.Begin)
             Dim buffer as Byte() = New Byte(RootDirSize){}
             br.Read(buffer, 0, RootDirSize)
-            Dim ms as New MemoryStream(buffer)
-            ms.Position = 0
-            br = New BinaryReader(ms)
             For i as Int32 = 0 To RootDirSize - 1
-              hh
+            
 
             Next
             
