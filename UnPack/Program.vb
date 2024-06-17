@@ -44,7 +44,7 @@ Module Program
                         Console.WriteLine("unknow version")
                     End If
                 End If
-                Console.WriteLine("version :  {0}", FileVersion)
+                
             ElseIf AscW(EOF1) = &H2A Then
                 Dim m_head As Char = br.ReadChar
                 Dim encode As New List(Of Char)(32 + 1)
@@ -71,6 +71,7 @@ Module Program
                     Console.WriteLine("unknow version")
                 End If
             End If
+            
             Dim RootDirPos As Int32 = br.ReadInt32
             Dim RootDirSize As Int32 = br.ReadInt32
             Dim RootDirTime As Int32 = br.ReadInt32
@@ -86,8 +87,8 @@ Module Program
             Dim buffer as Byte() = New Byte(RootDirSize){}
             br.Read(buffer, 0, RootDirSize)
             For i as Int32 = 0 To RootDirSize - 1
-            
-
+             buffer(i) = &H49 + (KEYS(RootDirPos Mod KEYS.Length) Xor Not buffer(i))
+             RootDirPos +=1
             Next
             
 
