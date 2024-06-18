@@ -11,19 +11,19 @@ Imports System.Text.RegularExpressions
 Module Program
 
     Public br As BinaryReader
-    Public input As String
+    Public source As String
 
     Sub Main(args As String())
 
         If args.Count = 0 Then
             Console.WriteLine("Tool UnPack - 2CongLC.vn :: 2024")
         Else
-            input = args(0)
+            source = args(0)
         End If
 
         Dim p As String = Nothing
-        If IO.File.Exists(input) Then
-            br = New BinaryReader(File.OpenRead(input))
+        If IO.File.Exists(source) Then
+            br = New BinaryReader(File.OpenRead(source))
             Dim CR1 As Char = br.ReadChar ' Offset = 0, Length = 2
             Dim LF1 As Char = br.ReadChar ' Offset = 2, Length = 2
             Dim FileType As String = New String(br.ReadChars(60)) ' Offset = 4, Length = 60
@@ -33,16 +33,16 @@ Module Program
             Dim CR3 As Char = br.ReadChar ' Offset = 128, Length = 2
             Dim LF3 As Char = br.ReadChar ' Offset = 130, Length = 2
             Dim EOF1 As Char = br.ReadChar ' Offset = 132, Length = 2
-            Dim FileFormatVersion As UInt32 = br.ReadUInt32 ' Offet = 134, Length = 4
-            Dim RootDirPos As UInt32 = br.ReadUInt32 ' Offset = 138, Length = 4
-            Dim RootDirSize As UInt32 = br.ReadUInt32 ' Offset = 142, Length = 4
-            Dim RootDirTime As UInt32 = br.ReadUInt32 ' Offset = 146, Length = 4
-            Dim NextWritePos As UInt32 = br.ReadUInt32 ' Offset = 150, Length = 4
-            Dim Time As UInt32 = br.ReadUInt32 ' Offset = 154, Length = 4
-            Dim LargestKeyAry As UInt32 = br.ReadUInt32 ' Offset = 158, Length = 4
-            Dim LargestDirNameSize As UInt32 = br.ReadUInt32 ' Offset = 162, Length = 4
-            Dim LargestRezNameSize As UInt32 = br.ReadUInt32 ' Offset = 166, Length = 4
-            Dim LargestCommentSize As UInt32 = br.ReadUInt32 ' Offset = 170, Length = 4
+            Dim FileFormatVersion As UInt32 = br.ReadInt32 ' Offet = 134, Length = 4
+            Dim RootDirPos As Int32 = br.ReadInt32 ' Offset = 138, Length = 4
+            Dim RootDirSize As Int32 = br.ReadInt32 ' Offset = 142, Length = 4
+            Dim RootDirTime As Int32 = br.ReadInt32 ' Offset = 146, Length = 4
+            Dim NextWritePos As Int32 = br.ReadInt32 ' Offset = 150, Length = 4
+            Dim Time As Int32 = br.ReadInt32 ' Offset = 154, Length = 4
+            Dim LargestKeyAry As Int32 = br.ReadInt32 ' Offset = 158, Length = 4
+            Dim LargestDirNameSize As Int32 = br.ReadInt32 ' Offset = 162, Length = 4
+            Dim LargestRezNameSize As Int32 = br.ReadInt32 ' Offset = 166, Length = 4
+            Dim LargestCommentSize As Int32 = br.ReadInt32 ' Offset = 170, Length = 4
             Dim IsSorted As Byte = br.ReadByte ' Offset = 174, Length = 1
 
             Console.WriteLine("
