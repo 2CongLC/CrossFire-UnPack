@@ -55,6 +55,10 @@ Module Program
             br.BaseStream.Position = RootDirPos
             Dim buffer As Byte() = New Byte(RootDirSize) {}
             br.Read(buffer, 0, RootDirSize)
+            For i As Integer = 0 To RootDirSize - 1
+                buffer(i) = CByte(&H49 + (keys((RootDirPos Mod keys.Length) Xor Not buffer(i)))
+                RootDirPos += 1
+            Next
             Dim ms as New MemoryStream(buffer)
             ms.Position = 0
             br = New BinaryReader(ms)
@@ -114,7 +118,7 @@ Module Program
         End Sub
     End Class
 
-    Public KEYS As Byte() = {
+    Public keys As Byte() = {
     &HF0, &HF0, &H9D, &H9, &HA, &H66, &HAD, &H6A, &H85, &H1D,
     &HFD, &H3F, &H51, &H23, &HE7, &HF3, &HB1, &HE, &H78, &HEC,
     &HD1, &H50, &H7B, &H6B, &H17, &H3F, &H61, &HC5, &H79, &HC,
