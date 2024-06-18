@@ -48,9 +48,9 @@ Module Program
             Console.WriteLine("
                              - File Type : {0}
                              - UserTitle : {1}
-                             - FileFormatVersion : {2}
+                             - Version : {2}
                              - RootDirPos : {3}
-                             - RootDirSize : {4}", FileType, UserTitle, FileFormatVersion, RootDirPos, RootDirSize)
+                             - RootDirSize : {4}", FileType, UserTitle, Version, RootDirPos, RootDirSize)
 
             br.BaseStream.Position = RootDirPos
             Dim buffer As Byte() = New Byte(RootDirSize) {}
