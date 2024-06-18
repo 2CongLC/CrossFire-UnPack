@@ -55,6 +55,13 @@ Module Program
             br.BaseStream.Position = RootDirPos
             Dim buffer As Byte() = New Byte(RootDirSize) {}
             br.Read(buffer, 0, RootDirSize)
+            Dim ms as New MemoryStream(buffer)
+            ms.Position = 0
+            br = New BinaryReader(ms)
+            While br.BaseStream.Position < br.BaseStream.Length
+
+
+            End While
 
 
 
