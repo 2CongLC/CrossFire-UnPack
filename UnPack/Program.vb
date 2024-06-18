@@ -33,7 +33,7 @@ Module Program
             Dim CR3 As Char = br.ReadChar ' Offset = 128, Length = 2
             Dim LF3 As Char = br.ReadChar ' Offset = 130, Length = 2
             Dim EOF1 As Char = br.ReadChar ' Offset = 132, Length = 2
-            Dim FileFormatVersion As UInt32 = br.ReadInt32 ' Offet = 134, Length = 4
+            Dim Version As Int32 = br.ReadInt32 ' Offet = 134, Length = 4
             Dim RootDirPos As Int32 = br.ReadInt32 ' Offset = 138, Length = 4
             Dim RootDirSize As Int32 = br.ReadInt32 ' Offset = 142, Length = 4
             Dim RootDirTime As Int32 = br.ReadInt32 ' Offset = 146, Length = 4
